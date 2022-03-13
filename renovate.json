@@ -1,5 +1,41 @@
 {
+  "baseBranches": [
+    "main"
+  ],
   "extends": [
-    "config:base"
+    ":separateMajorReleases",
+    ":ignoreUnstable",
+    ":prNotPending",
+    ":updateNotScheduled",
+    ":prHourlyLimitNone",
+    ":prConcurrentLimitNone",
+    ":automergeLinters",
+    ":automergeTesters",
+    ":automergeTypes",
+    ":automergePr",
+    "group:monorepos",
+    "group:recommended"
+  ],
+  "prNotPendingHours": 1,
+  "schedule": "before 1pm on Monday",
+  "timezone": "Asia/Tokyo",
+  "packageRules": [
+    {
+      "depTypeList": [
+        "devDependencies"
+      ],
+      "updateTypes": [
+        "patch"
+      ],
+      "automerge": true
+    },
+    {
+      "packageNames": [
+        "lint-staged",
+        "husky"
+      ],
+      "groupName": "autoMergedDevDependencies",
+      "automerge": true
+    }
   ]
 }
